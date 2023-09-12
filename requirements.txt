@@ -3,3 +3,4 @@ readline
 pandas
 pytest
 pyarrow
+tqdm
