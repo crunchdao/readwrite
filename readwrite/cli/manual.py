@@ -26,7 +26,7 @@ for handler in registry.handlers:
         file_paths: typing.Tuple[str],
         **kwargs
     ):
-        start_session(registry, file_paths, handler, **kwargs, history_file)
+        start_session(registry, file_paths, handler, kwargs, history_file)
 
     for key, value in handler.read_params().items():
         if isinstance(value, Param):
