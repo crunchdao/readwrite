@@ -1,0 +1,5 @@
+click
+readline
+pandas
+pytest
+pyarrow

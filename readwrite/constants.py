@@ -1,0 +1,1 @@
+DEFAULT_HISTORY_FILE_PATH = "~/.readwrite_history"
