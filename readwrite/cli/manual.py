@@ -27,11 +27,22 @@ for handler in registry.handlers:
         __handler=handler,
         **kwargs
     ):
+        params = {
+            key: None if isinstance(value, tuple) and not len(value) else value
+            for key, value in kwargs.items()
+        }
+        
+        params = {
+            key: value
+            for key, value in params.items()
+            if value is not None
+        }
+
         start_session(
             registry,
             file_paths,
             __handler,
-            kwargs,
+            params,
             history_file
         )
 
@@ -47,6 +58,7 @@ for handler in registry.handlers:
             f"--{key}",
             type=type,
             multiple=multiple,
+            default=None
         )(func)
 
     cli.command(name=handler.name)(func)
