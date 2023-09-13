@@ -24,9 +24,16 @@ for handler in registry.handlers:
     @click.argument("file-paths", nargs=-1, type=click.Path(exists=True))
     def func(
         file_paths: typing.Tuple[str],
+        __handler=handler,
         **kwargs
     ):
-        start_session(registry, file_paths, handler, kwargs, history_file)
+        start_session(
+            registry,
+            file_paths,
+            __handler,
+            kwargs,
+            history_file
+        )
 
     for key, value in handler.read_params().items():
         if isinstance(value, Param):
