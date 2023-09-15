@@ -1,5 +1,6 @@
 click
-readline
+pyreadline3; platform_system == "Windows"
+readline; platform_system != "Windows"
 pandas
 pytest
 pyarrow

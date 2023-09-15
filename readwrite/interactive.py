@@ -5,7 +5,6 @@ import sys
 import os
 
 import tqdm
-import readline
 import rlcompleter
 
 from .handlers.base import Handler
@@ -70,6 +69,15 @@ def _load_files(
     }
 
 
+def _get_readline():
+    if os.name == 'nt':
+        import pyreadline3
+        return pyreadline3.Readline()
+    else:
+        import readline
+        return readline
+
+
 def start_session(
     registry: Registry,
     file_paths: typing.Iterable[str],
@@ -118,6 +126,7 @@ def start_session(
         banner += f"{name}: {type_name}\n"
         banner += f"{path_name}: {path}\n"
 
+    readline = _get_readline()
     readline.set_completer(rlcompleter.Completer(locals).complete)
     readline.parse_and_bind("tab: complete")
 
