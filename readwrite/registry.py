@@ -1,7 +1,7 @@
 import typing
 import os
 
-from .handlers.base import Handler, Param
+from .handlers.base import Handler
 
 
 class Registry:
