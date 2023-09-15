@@ -32,7 +32,7 @@ class Registry:
             if extension in handler.extensions:
                 return handler
 
-        raise ValueError(f"unknown extension: {dot_extension}")
+        raise ValueError(f"unknown extension: {extension}")
 
     def add_defaults(self):
         from .handlers.csv import CsvHandler
