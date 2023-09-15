@@ -9,7 +9,7 @@ Quickly read and write file based on their extension.
 ## Install
 
 ```
-python3 -m pip install --upgrade git+https://github.com/crunchdao/readwrite
+python3 -m pip install --upgrade readwrite
 ```
 
 ## CLI Usage
