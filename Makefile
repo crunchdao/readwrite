@@ -10,7 +10,8 @@ install: init
 test:
 	$(PYTHON) -m pytest -v
 
-example:
-	PYTHONPATH=. find example/ -name "*.py" -exec $(PYTHON) {} \;
+build:
+	rm -rf build *.egg-info dist
+	python setup.py sdist bdist_wheel
 
-.PHONY: init install test example
+.PHONY: init install uninstall build
