@@ -15,4 +15,6 @@ class RegistryTest(unittest.TestCase):
         self.assertIsInstance(registry.get("csv"), readwrite.handlers.csv.CsvHandler)
 
     def test_get_not_found(self):
-        self.assertRaises(ValueError, lambda: registry.get("abcdef"))
+        self.assertRaises(
+            readwrite.registry.UnknownExtension, lambda: registry.get("abcdef")
+        )

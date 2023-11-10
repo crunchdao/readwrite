@@ -4,8 +4,14 @@ import os
 from .handlers.base import Handler
 
 
-class Registry:
+class UnknownExtension(ValueError):
+    def __init__(self, extension: str):
+        super().__init__(f"unknown extension: {extension}")
 
+        self.extension = extension
+
+
+class Registry:
     handlers = typing.List[Handler]
 
     def __init__(self):
@@ -33,12 +39,12 @@ class Registry:
             extension = dot_extension[1:]
         except:
             extension = path_or_extension
-        
+
         for handler in self.handlers:
             if extension in handler.extensions:
                 return handler
 
-        raise ValueError(f"unknown extension: {extension}")
+        raise UnknownExtension(extension)
 
     def add_defaults(self):
         from .handlers.csv import CsvHandler
