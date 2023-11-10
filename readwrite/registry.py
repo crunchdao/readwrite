@@ -17,17 +17,23 @@ class Registry:
     def read(self, path: str, **kwargs):
         return self.get(path).read(path, **kwargs)
 
+    def read_as(self, path: str, extension: str, **kwargs):
+        return self.get(extension).read(path, **kwargs)
+
     def write(self, x: typing.Any, path: str, **kwargs):
         self.get(path).write(x, path, **kwargs)
 
-    def get(self, path: str) -> Handler:
+    def write_as(self, x: typing.Any, path: str, extension: str, **kwargs):
+        self.get(extension).write(x, path, **kwargs)
+
+    def get(self, path_or_extension: str):
         try:
-            path.index(".")
-            _, dot_extension = os.path.splitext(path)
+            path_or_extension.index(".")
+            _, dot_extension = os.path.splitext(path_or_extension)
             extension = dot_extension[1:]
         except:
-            extension = path
-
+            extension = path_or_extension
+        
         for handler in self.handlers:
             if extension in handler.extensions:
                 return handler
