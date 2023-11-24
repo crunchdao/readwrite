@@ -115,6 +115,7 @@ def start_session(
     locals = {
         "read": _read,
         "write": _write,
+        "files": files,
         **paths,
         **names,
         **imports,
