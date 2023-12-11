@@ -91,6 +91,9 @@ class Registry:
         from .handlers.txt import TxtHandler
         self.add(TxtHandler())
 
+        from .handlers.yaml import YamlHandler
+        self.add(YamlHandler())
+
 
 _REGISTRY: Registry = None
 

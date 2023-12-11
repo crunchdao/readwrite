@@ -1,8 +1,11 @@
-import os
-import unittest
-import pandas
 import json
+import os
 import pickle
+import unittest
+
+import pandas
+import yaml
+
 import readwrite
 import readwrite.registry
 
@@ -113,5 +116,26 @@ class HandlerTxtTest(unittest.TestCase):
 
         with open(path) as fd:
             x = fd.read()
+
+        self.assertEqual(self.content, x)
+
+
+class HandlerYamlTest(unittest.TestCase):
+
+    handler = registry.get("yaml")
+    content = {"world": 42}
+
+    def test_read(self):
+        path = dummy_path("hello.yaml")
+        x = self.handler.read(path)
+
+        self.assertEqual(self.content, x)
+
+    def test_write(self):
+        path = "/tmp/hello.yaml"
+        self.handler.write(self.content, path, index=0)
+
+        with open(path) as fd:
+            x = yaml.full_load(fd)
 
         self.assertEqual(self.content, x)
