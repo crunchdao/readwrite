@@ -1,5 +1,7 @@
+import logging
 import typing
 
+from .constants import LOGGER
 from .registry import get_global_registry
 
 
@@ -31,3 +33,10 @@ def write_as(x: typing.Any, path: str, extension: str, **kwargs) -> typing.Any:
 
     get_global_registry().write_as(x, path, extension, **kwargs)
     return x
+
+
+def debug(state: bool):
+    if state:
+        LOGGER.setLevel(logging.DEBUG)
+    else:
+        LOGGER.setLevel(logging.NOTSET)

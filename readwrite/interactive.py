@@ -1,12 +1,13 @@
 import code
-import typing
 import importlib
-import sys
 import os
+import rlcompleter
+import sys
+import typing
 
 import tqdm
-import rlcompleter
 
+from .constants import LOGGER
 from .handlers.base import Handler
 from .registry import Registry
 
@@ -58,6 +59,11 @@ def _load_files(
             if handler is None:
                 return registry.read(file_path, **kwargs)
             else:
+                LOGGER.debug(
+                    "read - handler=%s path=`%s`",
+                    handler.name, file_path
+                )
+
                 return handler.read(file_path, **kwargs)
         except Exception as exception:
             tqdm.tqdm.write(

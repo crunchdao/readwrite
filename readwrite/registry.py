@@ -1,6 +1,7 @@
-import typing
 import os
+import typing
 
+from .constants import LOGGER
 from .handlers.base import Handler
 
 
@@ -21,16 +22,44 @@ class Registry:
         self.handlers.append(handler)
 
     def read(self, path: str, **kwargs):
-        return self.get(path).read(path, **kwargs)
+        handler = self.get(path)
+
+        LOGGER.debug(
+            "read - handler=%s path=`%s`",
+            handler.name, path
+        )
+
+        return handler.read(path, **kwargs)
 
     def read_as(self, path: str, extension: str, **kwargs):
-        return self.get(extension).read(path, **kwargs)
+        handler = self.get(extension)
+
+        LOGGER.debug(
+            "read - handler=%s path=`%s`",
+            handler.name, path
+        )
+
+        return handler.read(path, **kwargs)
 
     def write(self, x: typing.Any, path: str, **kwargs):
-        self.get(path).write(x, path, **kwargs)
+        handler = self.get(path)
+
+        LOGGER.debug(
+            "write - handler=%s path=`%s`",
+            handler.name, path
+        )
+
+        handler.write(x, path, **kwargs)
 
     def write_as(self, x: typing.Any, path: str, extension: str, **kwargs):
-        self.get(extension).write(x, path, **kwargs)
+        handler = self.get(extension)
+
+        LOGGER.debug(
+            "write - handler=%s path=`%s`",
+            handler.name, path
+        )
+
+        handler.write(x, path, **kwargs)
 
     def get(self, path_or_extension: str):
         try:

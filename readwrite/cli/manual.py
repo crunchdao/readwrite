@@ -1,20 +1,25 @@
-import click
 import typing
 
-from ..registry import get_global_registry
+import click
+
+from ..constants import DEFAULT_HISTORY_FILE_PATH
 from ..handlers.base import Param
 from ..interactive import start_session
-from ..constants import DEFAULT_HISTORY_FILE_PATH
-
+from ..registry import get_global_registry
+from .utils import enable_debug
 
 history_file: str
 
 
 @click.group()
+@click.option("--debug", is_flag=True)
 @click.option("--history-file", "history_file_value", default=DEFAULT_HISTORY_FILE_PATH)
 def cli(
+    debug: bool,
     history_file_value: str
 ):
+    enable_debug(debug)
+
     global history_file
     history_file = history_file_value
 
@@ -31,7 +36,7 @@ for handler in registry.handlers:
             key: None if isinstance(value, tuple) and not len(value) else value
             for key, value in kwargs.items()
         }
-        
+
         params = {
             key: value
             for key, value in params.items()
