@@ -32,16 +32,16 @@ for handler in registry.handlers:
         __handler=handler,
         **kwargs
     ):
-        params = {
-            key: None if isinstance(value, tuple) and not len(value) else value
-            for key, value in kwargs.items()
-        }
+        params = {}
+        for key, value in kwargs.items():
+            if isinstance(value, tuple):
+                if len(value):
+                    value = list(value)
+                else:
+                    value = None
 
-        params = {
-            key: value
-            for key, value in params.items()
-            if value is not None
-        }
+            if value is not None:
+                params[key] = value
 
         start_session(
             registry,
