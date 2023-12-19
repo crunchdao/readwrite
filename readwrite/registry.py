@@ -102,7 +102,9 @@ def get_global_registry():
     global _REGISTRY
 
     if _REGISTRY is None:
-        _REGISTRY = Registry()
-        _REGISTRY.add_defaults()
+        registry = Registry()
+        registry.add_defaults()
+
+        _REGISTRY = registry
 
     return _REGISTRY
