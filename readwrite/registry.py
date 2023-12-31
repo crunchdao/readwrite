@@ -76,6 +76,9 @@ class Registry:
         raise UnknownExtension(extension)
 
     def add_defaults(self):
+        from .handlers.binary import BinaryHandler
+        self.add(BinaryHandler())
+
         from .handlers.csv import CsvHandler
         self.add(CsvHandler())
 

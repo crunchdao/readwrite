@@ -21,6 +21,25 @@ def dummy_path(name: str):
 registry = readwrite.registry.get_global_registry()
 
 
+class HandlerBinaryTest(unittest.TestCase):
+
+    handler = registry.get("bin")
+    content = "world".encode("ascii")
+
+    def test_read(self):
+        path = dummy_path("hello.bin")
+        x = self.handler.read(path)
+
+        self.assertEquals(self.content, x)
+
+    def test_write(self):
+        path = "/tmp/hello.bin"
+        self.handler.write(self.content, path, index=0)
+
+        with open(path, "rb") as fd:
+            self.assertEquals(self.content, fd.read())
+
+
 class HandlerCsvTest(unittest.TestCase):
 
     handler = registry.get("csv")
