@@ -3,7 +3,7 @@ import typing
 
 from .constants import LOGGER
 from .handlers.base import Handler
-
+from .utils import measure_duration
 
 class UnknownExtension(ValueError):
     def __init__(self, extension: str):
@@ -24,42 +24,26 @@ class Registry:
     def read(self, path: str, **kwargs):
         handler = self.get(path)
 
-        LOGGER.debug(
-            "read - handler=%s path=`%s`",
-            handler.name, path
-        )
-
-        return handler.read(path, **kwargs)
+        with measure_duration("read", handler.name, path):
+            return handler.read(path, **kwargs)
 
     def read_as(self, path: str, extension: str, **kwargs):
         handler = self.get(extension)
 
-        LOGGER.debug(
-            "read - handler=%s path=`%s`",
-            handler.name, path
-        )
-
-        return handler.read(path, **kwargs)
+        with measure_duration("read_as", handler.name, path):
+            return handler.read(path, **kwargs)
 
     def write(self, x: typing.Any, path: str, **kwargs):
         handler = self.get(path)
 
-        LOGGER.debug(
-            "write - handler=%s path=`%s`",
-            handler.name, path
-        )
-
-        handler.write(x, path, **kwargs)
+        with measure_duration("write", handler.name, path):
+            handler.write(x, path, **kwargs)
 
     def write_as(self, x: typing.Any, path: str, extension: str, **kwargs):
         handler = self.get(extension)
 
-        LOGGER.debug(
-            "write - handler=%s path=`%s`",
-            handler.name, path
-        )
-
-        handler.write(x, path, **kwargs)
+        with measure_duration("write_as", handler.name, path):
+            handler.write(x, path, **kwargs)
 
     def get(self, path_or_extension: str):
         try:
