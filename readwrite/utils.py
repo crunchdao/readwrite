@@ -1,17 +1,17 @@
-import time
 import contextlib
+import time
 
 from .constants import LOGGER
 
 
 @contextlib.contextmanager
 def measure_duration(operation: str, handler_name: str, path: str):
-    start_time = time.time()
-
     LOGGER.debug(
         "%s - handler=%s path=`%s`",
         operation, handler_name, path
     )
+
+    start_time = time.time()
 
     try:
         yield
