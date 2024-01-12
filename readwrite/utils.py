@@ -13,12 +13,13 @@ def measure_duration(operation: str, handler_name: str, path: str):
         operation, handler_name, path
     )
 
-    yield
+    try:
+        yield
+    finally:
+        end_time = time.time()
+        duration = end_time - start_time
 
-    end_time = time.time()
-    duration = end_time - start_time
-
-    LOGGER.debug(
-        "%s - handler=%s path=`%s` duration=%.4fs",
-        operation, handler_name, path, duration
-    )
+        LOGGER.debug(
+            "%s - handler=%s path=`%s` duration=%.4fs",
+            operation, handler_name, path, duration
+        )
