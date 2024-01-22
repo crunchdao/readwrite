@@ -4,6 +4,7 @@ import pickle
 import unittest
 
 import pandas
+import toml
 import yaml
 
 import readwrite
@@ -114,6 +115,27 @@ class HandlerPickleTest(unittest.TestCase):
 
         with open(path, "rb") as fd:
             x = pickle.load(fd)
+
+        self.assertEqual(self.content, x)
+
+
+class HandlerTomlTest(unittest.TestCase):
+
+    handler = registry.get("toml")
+    content = {"world": 42}
+
+    def test_read(self):
+        path = dummy_path("hello.toml")
+        x = self.handler.read(path)
+
+        self.assertEqual(self.content, x)
+
+    def test_write(self):
+        path = "/tmp/hello.toml"
+        self.handler.write(self.content, path)
+
+        with open(path) as fd:
+            x = toml.load(fd)
 
         self.assertEqual(self.content, x)
 

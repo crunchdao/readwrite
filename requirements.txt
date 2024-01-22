@@ -5,3 +5,4 @@ pytest
 pyarrow
 tqdm
 pyyaml
+toml
