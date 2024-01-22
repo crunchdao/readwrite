@@ -75,6 +75,9 @@ class Registry:
         from .handlers.pickle_ import PickleHandler
         self.add(PickleHandler())
 
+        from .handlers.toml import TomlHandler
+        self.add(TomlHandler())
+
         from .handlers.txt import TxtHandler
         self.add(TxtHandler())
 
