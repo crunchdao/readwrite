@@ -1,11 +1,11 @@
 from .base import Handler
 
 
-class TxtHandler(Handler):
+class TextHandler(Handler):
 
     def __init__(self):
         super().__init__(
-            "txt",
+            "text",
             ["txt"]
         )
 
