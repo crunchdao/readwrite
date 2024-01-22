@@ -6,7 +6,7 @@ class YamlHandler(Handler):
     def __init__(self):
         super().__init__(
             "yaml",
-            ["yaml"]
+            ["yml", "yaml"]
         )
 
     def read(self, path, **kwargs):

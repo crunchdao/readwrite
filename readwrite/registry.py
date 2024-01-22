@@ -78,8 +78,8 @@ class Registry:
         from .handlers.toml import TomlHandler
         self.add(TomlHandler())
 
-        from .handlers.txt import TxtHandler
-        self.add(TxtHandler())
+        from .handlers.text import TextHandler
+        self.add(TextHandler())
 
         from .handlers.yaml import YamlHandler
         self.add(YamlHandler())
