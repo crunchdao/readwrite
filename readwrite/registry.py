@@ -72,7 +72,7 @@ class Registry:
         from .handlers.parquet import ParquetHandler
         self.add(ParquetHandler())
 
-        from .handlers.pickle_ import PickleHandler
+        from .handlers.pickle import PickleHandler
         self.add(PickleHandler())
 
         from .handlers.toml import TomlHandler
