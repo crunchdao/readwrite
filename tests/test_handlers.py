@@ -59,6 +59,24 @@ class HandlerCsvTest(unittest.TestCase):
         self.assertTrue(self.content.equals(pandas.read_csv(path)))
 
 
+class HandlerExcelTest(unittest.TestCase):
+
+    handler = registry.get("xlsx")
+    content = pandas.DataFrame([42], columns=["world"])
+
+    def test_read(self):
+        path = dummy_path("hello.xlsx")
+        x = self.handler.read(path)
+
+        self.assertTrue(self.content.equals(x))
+
+    def test_write(self):
+        path = "/tmp/hello.xlsx"
+        self.handler.write(self.content, path, index=False)
+
+        self.assertTrue(self.content.equals(pandas.read_excel(path)))
+
+
 class HandlerJsonTest(unittest.TestCase):
 
     handler = registry.get("json")

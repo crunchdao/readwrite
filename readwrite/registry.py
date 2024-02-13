@@ -66,6 +66,9 @@ class Registry:
         from .handlers.csv import CsvHandler
         self.add(CsvHandler())
 
+        from .handlers.excel import ExcelHandler
+        self.add(ExcelHandler())
+
         from .handlers.json import JsonHandler
         self.add(JsonHandler())
 
