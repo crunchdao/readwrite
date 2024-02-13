@@ -158,7 +158,7 @@ class HandlerTomlTest(unittest.TestCase):
         self.assertEqual(self.content, x)
 
 
-class HandlerTxtTest(unittest.TestCase):
+class HandlerTextTest(unittest.TestCase):
 
     handler = registry.get("txt")
     content = "world"
