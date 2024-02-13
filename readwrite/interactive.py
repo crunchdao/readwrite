@@ -44,6 +44,7 @@ def load_common_imports():
 
     load("json")
     load("pandas", ["pd"])
+    load("numpy", ["np"])
 
     return imports
 
