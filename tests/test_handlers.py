@@ -11,10 +11,10 @@ import readwrite
 import readwrite.registry
 
 
-def dummy_path(name: str):
+def fixture_path(name: str):
     return os.path.join(
         os.path.dirname(__file__),
-        "dummy",
+        "fixtures",
         name
     )
 
@@ -28,7 +28,7 @@ class HandlerBinaryTest(unittest.TestCase):
     content = "world".encode("ascii")
 
     def test_read(self):
-        path = dummy_path("hello.bin")
+        path = fixture_path("hello.bin")
         x = self.handler.read(path)
 
         self.assertEquals(self.content, x)
@@ -47,7 +47,7 @@ class HandlerCsvTest(unittest.TestCase):
     content = pandas.DataFrame([42], columns=["world"])
 
     def test_read(self):
-        path = dummy_path("hello.csv")
+        path = fixture_path("hello.csv")
         x = self.handler.read(path)
 
         self.assertTrue(self.content.equals(x))
@@ -59,13 +59,31 @@ class HandlerCsvTest(unittest.TestCase):
         self.assertTrue(self.content.equals(pandas.read_csv(path)))
 
 
+class HandlerExcelTest(unittest.TestCase):
+
+    handler = registry.get("xlsx")
+    content = pandas.DataFrame([42], columns=["world"])
+
+    def test_read(self):
+        path = fixture_path("hello.xlsx")
+        x = self.handler.read(path)
+
+        self.assertTrue(self.content.equals(x))
+
+    def test_write(self):
+        path = "/tmp/hello.xlsx"
+        self.handler.write(self.content, path, index=False)
+
+        self.assertTrue(self.content.equals(pandas.read_excel(path)))
+
+
 class HandlerJsonTest(unittest.TestCase):
 
     handler = registry.get("json")
     content = {"world": 42}
 
     def test_read(self):
-        path = dummy_path("hello.json")
+        path = fixture_path("hello.json")
         x = self.handler.read(path)
 
         self.assertEqual(self.content, x)
@@ -86,7 +104,7 @@ class HandlerParquetTest(unittest.TestCase):
     content = pandas.DataFrame([42], columns=["world"])
 
     def test_read(self):
-        path = dummy_path("hello.parquet")
+        path = fixture_path("hello.parquet")
         x = self.handler.read(path)
 
         self.assertTrue(self.content.equals(x))
@@ -104,7 +122,7 @@ class HandlerPickleTest(unittest.TestCase):
     content = {"world": 42}
 
     def test_read(self):
-        path = dummy_path("hello.pickle")
+        path = fixture_path("hello.pickle")
         x = self.handler.read(path)
 
         self.assertEqual(self.content, x)
@@ -125,7 +143,7 @@ class HandlerTomlTest(unittest.TestCase):
     content = {"world": 42}
 
     def test_read(self):
-        path = dummy_path("hello.toml")
+        path = fixture_path("hello.toml")
         x = self.handler.read(path)
 
         self.assertEqual(self.content, x)
@@ -140,13 +158,13 @@ class HandlerTomlTest(unittest.TestCase):
         self.assertEqual(self.content, x)
 
 
-class HandlerTxtTest(unittest.TestCase):
+class HandlerTextTest(unittest.TestCase):
 
     handler = registry.get("txt")
     content = "world"
 
     def test_read(self):
-        path = dummy_path("hello.txt")
+        path = fixture_path("hello.txt")
         x = self.handler.read(path)
 
         self.assertEqual(self.content, x)
@@ -167,7 +185,7 @@ class HandlerYamlTest(unittest.TestCase):
     content = {"world": 42}
 
     def test_read(self):
-        path = dummy_path("hello.yaml")
+        path = fixture_path("hello.yaml")
         x = self.handler.read(path)
 
         self.assertEqual(self.content, x)
