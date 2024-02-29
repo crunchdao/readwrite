@@ -13,10 +13,10 @@ class JsonHandler(Handler):
         import json
 
         with open(path, "r") as fd:
-            return json.load(fd)
+            return json.load(fd, **kwargs)
 
     def write(self, x, path, **kwargs):
         import json
 
         with open(path, "w") as fd:
-            return json.dump(x, fd)
+            return json.dump(x, fd, **kwargs)
