@@ -89,8 +89,8 @@ class HandlerJsonTest(unittest.TestCase):
         self.assertEqual(self.content, x)
 
     def test_write(self):
-        path = "/tmp/hello.csv"
-        self.handler.write(self.content, path, index=0)
+        path = "/tmp/hello.json"
+        self.handler.write(self.content, path)
 
         with open(path) as fd:
             x = json.load(fd)
