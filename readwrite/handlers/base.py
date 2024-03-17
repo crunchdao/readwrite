@@ -7,6 +7,7 @@ import dataclasses
 class Param:
     type: type
     multiple: bool = False
+    is_flag: bool = False
 
 
 class Handler:

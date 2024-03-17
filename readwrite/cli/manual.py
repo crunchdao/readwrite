@@ -55,15 +55,18 @@ for handler in registry.handlers:
         if isinstance(value, Param):
             multiple = value.multiple
             type = value.type
+            is_flag = value.is_flag
         else:
             multiple = False
             type = value
+            is_flag = value == bool
 
         key = key.replace("_", "-")
         func = click.option(
             f"--{key}",
             type=type,
             multiple=multiple,
+            is_flag=is_flag,
             default=None
         )(func)
 
