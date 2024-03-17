@@ -59,6 +59,7 @@ for handler in registry.handlers:
             multiple = False
             type = value
 
+        key = key.replace("_", "-")
         func = click.option(
             f"--{key}",
             type=type,
