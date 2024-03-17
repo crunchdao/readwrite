@@ -206,7 +206,7 @@ class HandlerYamlTest(unittest.TestCase):
 
     def test_write(self):
         path = "/tmp/hello.yaml"
-        self.handler.write(self.content, path, index=0)
+        self.handler.write(self.content, path)
 
         with open(path) as fd:
             x = yaml.full_load(fd)
