@@ -1,4 +1,4 @@
-from .base import Handler
+from .base import Handler, Param
 
 
 class CsvHandler(Handler):
@@ -16,7 +16,10 @@ class CsvHandler(Handler):
 
     def read_params(self):
         return {
-            "index_col": int
+            "index_col": Param(
+                int,
+                help="Column to use as row label, denoted by column index.",
+            )
         }
 
     def write(self, x, path, **kwargs):
@@ -29,5 +32,8 @@ class CsvHandler(Handler):
 
     def write_params(self):
         return {
-            "index": bool,
+            "index": Param(
+                bool,
+                help="Write row names (index)."
+            ),
         }

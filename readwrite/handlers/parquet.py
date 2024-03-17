@@ -16,8 +16,15 @@ class ParquetHandler(Handler):
 
     def read_params(self):
         return {
-            "engine": str,
-            "columns": Param(str, multiple=True)
+            "engine": Param(
+                str,
+                help="Parquet library to use."
+            ),
+            "columns": Param(
+                str,
+                multiple=True,
+                help="If not None, only these columns will be read from the file."
+            )
         }
 
     def write(self, x, path, **kwargs):
@@ -30,6 +37,13 @@ class ParquetHandler(Handler):
 
     def write_params(self):
         return {
-            "engine": str,
-            "index": bool,
+            "engine": Param(
+                str,
+                help="Parquet library to use."
+            ),
+            "index": Param(
+                bool,
+                is_flag=True,
+                help="Include the dataframe's index(es) in the file output."
+            ),
         }

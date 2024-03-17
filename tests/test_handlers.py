@@ -129,10 +129,24 @@ class HandlerPickleTest(unittest.TestCase):
 
     def test_write(self):
         path = "/tmp/hello.pickle"
-        self.handler.write(self.content, path, index=0)
+        self.handler.write(self.content, path)
 
         with open(path, "rb") as fd:
             x = pickle.load(fd)
+
+        self.assertEqual(self.content, x)
+
+    def test_read_pandas(self):
+        path = fixture_path("hello.pickle")
+        x = self.handler.read(path, pandas=True)
+
+        self.assertEqual(self.content, x)
+
+    def test_write_pandas(self):
+        path = "/tmp/hello.pickle"
+        self.handler.write(self.content, path, pandas=True)
+
+        x = pandas.read_pickle(path)
 
         self.assertEqual(self.content, x)
 
@@ -192,7 +206,7 @@ class HandlerYamlTest(unittest.TestCase):
 
     def test_write(self):
         path = "/tmp/hello.yaml"
-        self.handler.write(self.content, path, index=0)
+        self.handler.write(self.content, path)
 
         with open(path) as fd:
             x = yaml.full_load(fd)

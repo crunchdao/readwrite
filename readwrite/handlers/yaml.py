@@ -13,10 +13,10 @@ class YamlHandler(Handler):
         import yaml
 
         with open(path, "r") as fd:
-            return yaml.full_load(fd)
+            return yaml.full_load(fd, **kwargs)
 
     def write(self, x, path, **kwargs):
         import yaml
 
         with open(path, "w") as fd:
-            yaml.dump(x, fd)
+            yaml.dump(x, fd, **kwargs)

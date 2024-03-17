@@ -46,7 +46,7 @@ rw.write(df, "data.parquet")
 | [Excel](./readwrite/handlers/excel.py) | `xlsx` | [`pandas`](https://pandas.pydata.org/) |
 | [Json](./readwrite/handlers/json.py) | `json` | [Python's `json`](https://docs.python.org/3/library/json.html) |
 | [Parquet](./readwrite/handlers/parquet.py) | `parquet` | [`pandas`](https://pandas.pydata.org/) |
-| [Pickle](./readwrite/handlers/pickle.py) | `pkl`, `pickle` | [Python's `pickle`](https://docs.python.org/3/library/pickle.html) |
+| [Pickle](./readwrite/handlers/pickle.py) | `pkl`, `pickle` | [Python's `pickle`](https://docs.python.org/3/library/pickle.html) or [`pandas`](https://pandas.pydata.org/) |
 | [Toml](./readwrite/handlers/toml.py) | `toml` | [`toml`](https://pypi.org/project/toml/) |
 | [Text](./readwrite/handlers/text.py) | `txt` | [Python's `str`](https://docs.python.org/3/library/stdtypes.html#str) |
 | [Yaml](./readwrite/handlers/yaml.py) | `yml`, `yaml` | [`PyYAML`](https://pyyaml.org/) |

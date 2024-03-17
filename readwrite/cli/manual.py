@@ -55,15 +55,22 @@ for handler in registry.handlers:
         if isinstance(value, Param):
             multiple = value.multiple
             type = value.type
+            is_flag = value.is_flag
+            help = value.help
         else:
             multiple = False
             type = value
+            is_flag = value == bool
+            help = None
 
+        key = key.replace("_", "-")
         func = click.option(
             f"--{key}",
             type=type,
             multiple=multiple,
-            default=None
+            is_flag=is_flag,
+            default=None,
+            help=help
         )(func)
 
     cli.command(name=handler.name)(func)
