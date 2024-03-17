@@ -56,10 +56,12 @@ for handler in registry.handlers:
             multiple = value.multiple
             type = value.type
             is_flag = value.is_flag
+            help = value.help
         else:
             multiple = False
             type = value
             is_flag = value == bool
+            help = None
 
         key = key.replace("_", "-")
         func = click.option(
@@ -67,7 +69,8 @@ for handler in registry.handlers:
             type=type,
             multiple=multiple,
             is_flag=is_flag,
-            default=None
+            default=None,
+            help=help
         )(func)
 
     cli.command(name=handler.name)(func)

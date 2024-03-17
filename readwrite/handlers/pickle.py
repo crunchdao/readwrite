@@ -1,4 +1,4 @@
-from .base import Handler
+from .base import Handler, Param
 
 
 class PickleHandler(Handler):
@@ -22,7 +22,11 @@ class PickleHandler(Handler):
 
     def read_params(self):
         return {
-            "pandas": bool,
+            "pandas": Param(
+                bool,
+                is_flag=True,
+                help="Use `pandas.read_pickle()` instead of python's `pickle.load()`."
+            ),
         }
 
     def write(self, x, path, **kwargs):
@@ -38,5 +42,9 @@ class PickleHandler(Handler):
 
     def write_params(self):
         return {
-            "pandas": bool,
+            "pandas": Param(
+                bool,
+                is_flag=True,
+                help="Use `pandas.to_pickle()` instead of python's `pickle.dump()`."
+            ),
         }

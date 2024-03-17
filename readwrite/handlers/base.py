@@ -8,6 +8,7 @@ class Param:
     type: type
     multiple: bool = False
     is_flag: bool = False
+    help: str = None
 
 
 class Handler:
