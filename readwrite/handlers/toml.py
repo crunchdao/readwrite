@@ -13,10 +13,10 @@ class TomlHandler(Handler):
         import toml
 
         with open(path, "r") as fd:
-            return toml.load(fd)
+            return toml.load(fd, **kwargs)
 
     def write(self, x, path, **kwargs):
         import toml
 
         with open(path, "w") as fd:
-            return toml.dump(x, fd)
+            return toml.dump(x, fd, **kwargs)
