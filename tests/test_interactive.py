@@ -1,8 +1,18 @@
+import os
 import unittest
 
 import pandas
+
 import readwrite
 import readwrite.interactive
+
+
+def fixture_path(name: str):
+    return os.path.join(
+        os.path.dirname(__file__),
+        "fixtures",
+        name
+    )
 
 
 class NameTest(unittest.TestCase):
@@ -13,11 +23,20 @@ class NameTest(unittest.TestCase):
 
         self.assertEquals("df", name)
 
+    def test_guess_name_zip(self):
+        import zipfile
+
+        with zipfile.ZipFile(fixture_path("hello.zip")) as x:
+            name = readwrite.interactive.guess_name(x)
+
+        self.assertEquals("file", name)
+
     def test_guess_name_other(self):
         x = "hello"
         name = readwrite.interactive.guess_name(x)
 
         self.assertEquals("x", name)
+
 
 class CommonImportsTest(unittest.TestCase):
 
@@ -39,6 +58,7 @@ class CommonImportsTest(unittest.TestCase):
         import pandas
         self.assertEquals(pandas, imports["pandas"])
         self.assertEquals(pandas, imports["pd"])
+
 
 class ReadlineTest(unittest.TestCase):
 

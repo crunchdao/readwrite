@@ -11,6 +11,10 @@ from .constants import LOGGER
 from .handlers.base import Handler
 from .registry import Registry
 
+_GENERIC_NAMES_BY_CLASS = {
+    "zipfile.ZipFile": "file",
+}
+
 
 def guess_name(x: typing.Any):
     try:
@@ -20,7 +24,11 @@ def guess_name(x: typing.Any):
     except NameError:
         pass
 
-    return "x"
+    clazz = x.__class__
+    return _GENERIC_NAMES_BY_CLASS.get(
+        f"{clazz.__module__}.{clazz.__name__}",
+        "x"
+    )
 
 
 def load_common_imports():
@@ -67,8 +75,7 @@ def _load_files(
 
                 return handler.read(file_path, **kwargs)
         except Exception as exception:
-            tqdm.tqdm.write(
-                f"cannot load `{file_path}`: {exception}", file=sys.stderr)
+            tqdm.tqdm.write(f"cannot load `{file_path}`: {exception}", file=sys.stderr)
 
     return {
         file_path: do_read(file_path)
