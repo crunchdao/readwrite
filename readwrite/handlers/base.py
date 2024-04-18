@@ -12,7 +12,7 @@ class Param:
     help: str = None
 
 
-class Handler(abc.ABC):
+class Handler:
 
     def __init__(
         self,
@@ -22,16 +22,15 @@ class Handler(abc.ABC):
         self.name = name
         self.extensions = extensions
 
-    @abc.abstractmethod
     def read(self, path: str, **kwargs):
-        ...
+        raise NotImplementedError(f"unsupported read for {self.__class__.__name__}")
 
     def read_params(self) -> typing.Dict[str, typing.Union[Param, type]]:
         return {}
 
     @abc.abstractmethod
     def write(self, x: typing.Any, path: str, **kwargs):
-        ...
+        raise NotImplementedError(f"unsupported write for {self.__class__.__name__}")
 
     def write_params(self) -> typing.Dict[str, typing.Union[Param, type]]:
         return {}
