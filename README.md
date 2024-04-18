@@ -39,15 +39,15 @@ rw.write(df, "data.parquet")
 
 ## Supported Extensions
 
-| Handler | Extensions | Backend | Operations |
-| --- | --- | --- | --- |
-| [Binary](./readwrite/handlers/binary.py) | `bin` | [Python's `bytes`](https://docs.python.org/3/library/stdtypes.html#bytes) | `read` + `write` |
-| [Csv](./readwrite/handlers/csv.py) | `csv` | [`pandas`](https://pandas.pydata.org/) | `read` + `write` |
-| [Excel](./readwrite/handlers/excel.py) | `xlsx` | [`pandas`](https://pandas.pydata.org/) | `read` + `write` |
-| [Json](./readwrite/handlers/json.py) | `json` | [Python's `json`](https://docs.python.org/3/library/json.html) | `read` + `write` |
-| [Parquet](./readwrite/handlers/parquet.py) | `parquet` | [`pandas`](https://pandas.pydata.org/) | `read` + `write` |
-| [Pickle](./readwrite/handlers/pickle.py) | `pkl`, `pickle` | [Python's `pickle`](https://docs.python.org/3/library/pickle.html) or [`pandas`](https://pandas.pydata.org/) | `read` + `write` |
-| [Toml](./readwrite/handlers/toml.py) | `toml` | [`toml`](https://pypi.org/project/toml/) | `read` + `write` |
-| [Text](./readwrite/handlers/text.py) | `txt` | [Python's `str`](https://docs.python.org/3/library/stdtypes.html#str) | `read` + `write` |
-| [Yaml](./readwrite/handlers/yaml.py) | `yml`, `yaml` | [`PyYAML`](https://pyyaml.org/) | `read` + `write` |
-| [Zip](./readwrite/handlers/zip.py) | `zip` | [Python's `zipfile`](https://docs.python.org/3/library/zipfile.html) | `read` |
+| Handler | Extensions | Backend | Read | Write |
+| --- | --- | --- |:---:|:---:|
+| [Binary](./readwrite/handlers/binary.py) | `bin` | [Python's `bytes`](https://docs.python.org/3/library/stdtypes.html#bytes) | :heavy_check_mark: | :heavy_check_mark: |
+| [Csv](./readwrite/handlers/csv.py) | `csv` | [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Excel](./readwrite/handlers/excel.py) | `xlsx` | [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Json](./readwrite/handlers/json.py) | `json` | [Python's `json`](https://docs.python.org/3/library/json.html) | :heavy_check_mark: | :heavy_check_mark: |
+| [Parquet](./readwrite/handlers/parquet.py) | `parquet` | [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Pickle](./readwrite/handlers/pickle.py) | `pkl`, `pickle` | [Python's `pickle`](https://docs.python.org/3/library/pickle.html) or [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Toml](./readwrite/handlers/toml.py) | `toml` | [`toml`](https://pypi.org/project/toml/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Text](./readwrite/handlers/text.py) | `txt` | [Python's `str`](https://docs.python.org/3/library/stdtypes.html#str) | :heavy_check_mark: | :heavy_check_mark: |
+| [Yaml](./readwrite/handlers/yaml.py) | `yml`, `yaml` | [`PyYAML`](https://pyyaml.org/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Zip](./readwrite/handlers/zip.py) | `zip` | [Python's `zipfile`](https://docs.python.org/3/library/zipfile.html) | :heavy_check_mark: | :x: |
