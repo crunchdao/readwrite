@@ -13,6 +13,7 @@ from .registry import Registry
 
 _GENERIC_NAMES_BY_CLASS = {
     "zipfile.ZipFile": "file",
+    "tarfile.TarFile": "file",
 }
 
 

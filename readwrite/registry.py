@@ -81,6 +81,9 @@ class Registry:
         from .handlers.toml import TomlHandler
         self.add(TomlHandler())
 
+        from .handlers.tar import TarHandler
+        self.add(TarHandler())
+
         from .handlers.text import TextHandler
         self.add(TextHandler())
 
