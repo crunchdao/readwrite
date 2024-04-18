@@ -87,6 +87,9 @@ class Registry:
         from .handlers.yaml import YamlHandler
         self.add(YamlHandler())
 
+        from .handlers.zip import ZipHandler
+        self.add(ZipHandler())
+
 
 _REGISTRY: Registry = None
 
