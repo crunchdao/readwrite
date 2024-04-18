@@ -48,6 +48,7 @@ rw.write(df, "data.parquet")
 | [Parquet](./readwrite/handlers/parquet.py) | `parquet` | [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
 | [Pickle](./readwrite/handlers/pickle.py) | `pkl`, `pickle` | [Python's `pickle`](https://docs.python.org/3/library/pickle.html) or [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
 | [Toml](./readwrite/handlers/toml.py) | `toml` | [`toml`](https://pypi.org/project/toml/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Tar](./readwrite/handlers/tar.py) | `tar` | [Python's `tarfile`](https://docs.python.org/3/library/tarfile.html) | :heavy_check_mark: | :x: |
 | [Text](./readwrite/handlers/text.py) | `txt` | [Python's `str`](https://docs.python.org/3/library/stdtypes.html#str) | :heavy_check_mark: | :heavy_check_mark: |
 | [Yaml](./readwrite/handlers/yaml.py) | `yml`, `yaml` | [`PyYAML`](https://pyyaml.org/) | :heavy_check_mark: | :heavy_check_mark: |
 | [Zip](./readwrite/handlers/zip.py) | `zip` | [Python's `zipfile`](https://docs.python.org/3/library/zipfile.html) | :heavy_check_mark: | :x: |
