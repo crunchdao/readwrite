@@ -3,6 +3,7 @@ import os
 import pickle
 import unittest
 
+import joblib
 import pandas
 import toml
 import yaml
@@ -57,6 +58,24 @@ class HandlerCsvTest(unittest.TestCase):
         self.handler.write(self.content, path, index=0)
 
         self.assertTrue(self.content.equals(pandas.read_csv(path)))
+
+
+class HandlerJoblibTest(unittest.TestCase):
+
+    handler = registry.get("joblib")
+    content = {'hello': 'world', 'from': 42}
+
+    def test_read(self):
+        path = fixture_path("hello.joblib")
+        x = self.handler.read(path)
+
+        self.assertEqual(self.content, x)
+
+    def test_write(self):
+        path = "/tmp/hello.joblib"
+        self.handler.write(self.content, path)
+
+        self.assertEqual(self.content, joblib.load(path))
 
 
 class HandlerExcelTest(unittest.TestCase):

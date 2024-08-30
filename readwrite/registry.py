@@ -1,9 +1,9 @@
 import os
 import typing
 
-from .constants import LOGGER
 from .handlers.base import Handler
 from .utils import measure_duration
+
 
 class UnknownExtension(ValueError):
     def __init__(self, extension: str):
@@ -68,6 +68,9 @@ class Registry:
 
         from .handlers.excel import ExcelHandler
         self.add(ExcelHandler())
+
+        from .handlers.joblib import JoblibHandler
+        self.add(JoblibHandler())
 
         from .handlers.json import JsonHandler
         self.add(JsonHandler())
