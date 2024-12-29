@@ -93,6 +93,9 @@ class Registry:
         from .handlers.yaml import YamlHandler
         self.add(YamlHandler())
 
+        from .handlers.zarr import ZarrHandler
+        self.add(ZarrHandler())
+
         from .handlers.zip import ZipHandler
         self.add(ZipHandler())
 

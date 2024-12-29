@@ -52,4 +52,5 @@ rw.write(df, "data.parquet")
 | [Tar](./readwrite/handlers/tar.py) | `tar` | [Python's `tarfile`](https://docs.python.org/3/library/tarfile.html) | :heavy_check_mark: | :x: |
 | [Text](./readwrite/handlers/text.py) | `txt` | [Python's `str`](https://docs.python.org/3/library/stdtypes.html#str) | :heavy_check_mark: | :heavy_check_mark: |
 | [Yaml](./readwrite/handlers/yaml.py) | `yml`, `yaml` | [`PyYAML`](https://pyyaml.org/) | :heavy_check_mark: | :heavy_check_mark: |
+| [Zarr](./readwrite/handlers/zarr.py) | `zarr` | [`SpatialData`](https://spatialdata.scverse.org/en/stable/) | :heavy_check_mark: | :x: |
 | [Zip](./readwrite/handlers/zip.py) | `zip` | [Python's `zipfile`](https://docs.python.org/3/library/zipfile.html) | :heavy_check_mark: | :x: |
