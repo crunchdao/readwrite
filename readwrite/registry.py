@@ -49,9 +49,9 @@ class Registry:
         try:
             path_or_extension.index(".")
             _, dot_extension = os.path.splitext(path_or_extension)
-            extension = dot_extension[1:]
+            extension = dot_extension[1:].lower()
         except:
-            extension = path_or_extension
+            extension = path_or_extension.lower()
 
         for handler in self.handlers:
             if extension in handler.extensions:
