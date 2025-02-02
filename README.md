@@ -44,6 +44,7 @@ rw.write(df, "data.parquet")
 | [Binary](./readwrite/handlers/binary.py) | `bin` | [Python's `bytes`](https://docs.python.org/3/library/stdtypes.html#bytes) | :heavy_check_mark: | :heavy_check_mark: |
 | [Csv](./readwrite/handlers/csv.py) | `csv` | [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
 | [Excel](./readwrite/handlers/excel.py) | `xlsx` | [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |
+| [H5ad](./readwrite/handlers/h5ad.py) | `h5ad` | [`scanpy`](https://scanpy.readthedocs.io/en/stable/) | :heavy_check_mark: | :x: |
 | [Joblib](./readwrite/handlers/joblib.py) | `joblib` | [`joblib`](https://joblib.readthedocs.io/) | :heavy_check_mark: | :heavy_check_mark: |
 | [Json](./readwrite/handlers/json.py) | `json` | [Python's `json`](https://docs.python.org/3/library/json.html) | :heavy_check_mark: | :heavy_check_mark: |
 | [Parquet](./readwrite/handlers/parquet.py) | `parquet` | [`pandas`](https://pandas.pydata.org/) | :heavy_check_mark: | :heavy_check_mark: |

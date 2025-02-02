@@ -69,6 +69,9 @@ class Registry:
         from .handlers.excel import ExcelHandler
         self.add(ExcelHandler())
 
+        from .handlers.h5ad import H5adHandler
+        self.add(H5adHandler())
+
         from .handlers.joblib import JoblibHandler
         self.add(JoblibHandler())
 
