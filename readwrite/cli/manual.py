@@ -63,6 +63,10 @@ for handler in registry.handlers:
             is_flag = value == bool
             help = None
 
+        kwargs = {}
+        if help is not None:
+            kwargs["help"] = help
+
         key = key.replace("_", "-")
         func = click.option(
             f"--{key}",
@@ -70,7 +74,7 @@ for handler in registry.handlers:
             multiple=multiple,
             is_flag=is_flag,
             default=None,
-            help=help
+            **kwargs,
         )(func)
 
     cli.command(name=handler.name)(func)
